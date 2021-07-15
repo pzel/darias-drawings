@@ -4,7 +4,9 @@
   <title>ダーリアのお絵描き</title>
   <style type="text/css">
    img {
-     max-width: 80%;}
+     max-width: 40%;
+     margin-top: 5em;
+   }
    div.wrap {
      position: relative;
      float: left;
@@ -18,16 +20,22 @@
      transform: rotate(90deg);
      margin-top: 500px;
      margin-bottom: 500px;
-     max-width: 90%;
+     max-width: 40%;
    }
+   .flip img {
+     transform: rotate(180deg);
+   }
+
   </style>
 </head>
 <body>
   <% images.each do |i| -%>
-    <%  if i[:rotate] -%>
-<div class="wrap r"><img src="<%= i[:src] %>"></img></div>
+    <%  if i[:flip] -%>
+      <div class="wrap flip"><img src="<%= i[:src] %>"></img></div>
+    <% elsif i[:tip] -%>
+      <div class="wrap tip"><img src="<%= i[:src] %>"></img></div>
     <% else -%>
-<div class="wrap"><img src="<%= i[:src] %>"></img></div>
+      <div class="wrap"><img src="<%= i[:src] %>"></img></div>
     <% end -%>
   <% end -%>
 </body>
